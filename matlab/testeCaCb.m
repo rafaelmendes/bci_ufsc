@@ -4,8 +4,8 @@ clc;clear;close all;
 
 subj = '7';
 
-filenameT = ['dadosLotte_Normalizados_A0' subj 'T' '.mat'];
-filenameE = ['dadosLotte_Normalizados_A0' subj 'E' '.mat'];
+filenameT = ['/files/eeg_data/compIV_dsIIa/dadosLotte_Normalizados_A0' subj 'T' '.mat'];
+filenameE = ['/files/eeg_data/compIV_dsIIa/dadosLotte_Normalizados_A0' subj 'E' '.mat'];
 
 % mi = 5;
 lamA = 4;
