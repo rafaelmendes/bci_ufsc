@@ -83,11 +83,11 @@ for i=1:Nb, LamMaxB(i) = max(eig((Sb-Q^(-.5)*C(:,:,i+Na)*Q^(-.5))^2));end
 % for i=1:Na, LamMaxA(i) = sum(eig((Sa-Q^(-.5)*C(:,:,i)*Q^(-.5))^2));end
 % for i=1:Nb, LamMaxB(i) = sum(eig((Sb-Q^(-.5)*C(:,:,i+Na)*Q^(-.5))^2));end
 
-figure(11)
-subplot(212);plot(LamMaxB,'--o')
-hold on
-subplot(211);plot(LamMaxA,'--o')
-title('Eigenvalue Max Error H = I ')
+% figure(11)
+% subplot(212);plot(LamMaxB,'--o')
+% hold on
+% subplot(211);plot(LamMaxA,'--o')
+% title('Eigenvalue Max Error H = I ')
 % Autovalor Maximo do Erro Normalizado ao Quadrado.
 for i=1:Na, LamMaxAB(i) = max(eig((Sb-Q^(-.5)*C(:,:,i)*Q^(-.5))^2));end
 for i=1:Nb, LamMaxBA(i) = max(eig((Sa-Q^(-.5)*C(:,:,i+Na)*Q^(-.5))^2));end
@@ -96,10 +96,10 @@ for i=1:Nb, LamMaxBA(i) = max(eig((Sa-Q^(-.5)*C(:,:,i+Na)*Q^(-.5))^2));end
 % for i=1:Nb, LamMaxBA(i) = sum(eig((Sa-Q^(-.5)*C(:,:,i+Na)*Q^(-.5))^2));end
 
 
-hold on
-subplot(212);plot(LamMaxBA,'--r*')
-hold on
-subplot(211);plot(LamMaxAB,'--r*')
+% hold on
+% subplot(212);plot(LamMaxBA,'--r*')
+% hold on
+% subplot(211);plot(LamMaxAB,'--r*')
 
 
 indexB = find(LamMaxB-LamMaxBA>0);
@@ -108,23 +108,23 @@ indexA = find(LamMaxA-LamMaxAB>0);
 ComplementB = find(LamMaxB-LamMaxBA<0);
 ComplementA = find(LamMaxA-LamMaxAB<0);
 
-subplot(211);plot(indexA,LamMaxA(indexA),'ks')
-subplot(212);plot(indexB,LamMaxB(indexB),'ks')
+% subplot(211);plot(indexA,LamMaxA(indexA),'ks')
+% subplot(212);plot(indexB,LamMaxB(indexB),'ks')
 
 clear Q Sa Sb  LamMaxAB LamMaxBA
 
 %%
-figure(10)
-plot(diag(cA),'--o')
-hold on
-plot(diag(cB),'--ro')
-legend('A','B')
+% figure(10)
+% plot(diag(cA),'--o')
+% hold on
+% plot(diag(cB),'--ro')
+% legend('A','B')
 %%
 [U,d] = eig(cB,cB+cA);
 Wc = U(:,[1 2 3 20 21 22]);
 
-figure(1)
-plot(diag(d),'--o')
+% figure(1)
+% plot(diag(d),'--o')
 
 
 %% feature vectors
@@ -356,18 +356,18 @@ disp('feasible (+):')
 
 H = double(H);
 
-figure
-subplot(211);plot(diag(H),'--o')
-subplot(212);plot(eig(H),'--o')
+% figure
+% subplot(211);plot(diag(H),'--o')
+% subplot(212);plot(eig(H),'--o')
 %%
 
 h = diag(H);
 f = linspace(faixa(1),faixa(2),.5*q);
 
-figure
-plot(f,h(.5*q+1:q),'--ro');hold on
-plot(f,h(1:.5*q),'--o')
-legend('COS','SEN')
+% figure
+% plot(f,h(.5*q+1:q),'--ro');hold on
+% plot(f,h(1:.5*q),'--o')
+% legend('COS','SEN')
 
 %% Projeto CSP com Ho otimo
 
@@ -381,23 +381,23 @@ Sb = Q^(-.5)*C_barB*Q^(-.5);
 for i=1:Na, LamMaxA(i) = max(eig((Sa-Q^(-.5)*double(Ca{i})*Q^(-.5))^2));end
 for i=1:Nb, LamMaxB(i) = max(eig((Sb-Q^(-.5)*double(Cb{i})*Q^(-.5))^2));end
 
-figure(12)
-subplot(212);plot(LamMaxB,'--o')
-hold on
-subplot(211);plot(LamMaxA,'--o')
+% figure(12)
+% subplot(212);plot(LamMaxB,'--o')
+% hold on
+% subplot(211);plot(LamMaxA,'--o')
 
 for i=1:Na, LamMaxAB(i) = max(eig((Sb-Q^(-.5)*double(Ca{i})*Q^(-.5))^2));end
 for i=1:Nb, LamMaxBA(i) = max(eig((Sa-Q^(-.5)*double(Cb{i})*Q^(-.5))^2));end
-hold on
-subplot(212);plot(LamMaxBA,'--r*')
-hold on
-subplot(211);plot(LamMaxAB,'--r*')
+% hold on
+% subplot(212);plot(LamMaxBA,'--r*')
+% hold on
+% subplot(211);plot(LamMaxAB,'--r*')
 
 
 
 
-subplot(211);plot(indexA,LamMaxA(indexA),'ks')
-subplot(212);plot(indexB,LamMaxB(indexB),'ks')
+% subplot(211);plot(indexA,LamMaxA(indexA),'ks')
+% subplot(212);plot(indexB,LamMaxB(indexB),'ks')
 
 clear Q Sa Sb LamMaxA LamMaxB LamMaxAB LamMaxBA
 
@@ -407,11 +407,11 @@ clear Q Sa Sb LamMaxA LamMaxB LamMaxAB LamMaxBA
 [~,I] = sort(diag(D));
 W = V(:,I([1 2 3 20 21 22]));
 
-figure(1)
-hold on
-plot(diag(D),'--ro')
-legend('Normal','Otim')
-axis([0 23 0 1])
+% figure(1)
+% hold on
+% plot(diag(D),'--ro')
+% legend('Normal','Otim')
+% axis([0 23 0 1])
 %% Features vector Otim
 for i=1:Na+Nb,
     featOtim(:,i) = diag(W'*F(:,faixaFreq,i)*H*F(:,faixaFreq,i)'*W);
@@ -436,9 +436,9 @@ bo = .5*w'*(mA+mB);
 
 yTo = wo'*[xxA xxB] - bo;
 
-figure
-plot(yTo,'--o')
-grid
+% figure
+% plot(yTo,'--o')
+% grid
 clear mA mB Sa Sb 
 
 %% Evaluation Trainning Set
@@ -548,13 +548,13 @@ eBeO = sum(yEo(Na+1:Na+Nb)<0)/Nb;
 % % .5*(.5*(eAeO+eBeO)+.5*(eAo+eBo))
 
 %%
-plot(diag(C_barA),'--o')
-hold on
-plot(diag(C_barB),'--ro')
-legend('A','B')
+% plot(diag(C_barA),'--o')
+% hold on
+% plot(diag(C_barB),'--ro')
+% legend('A','B')
 
-figure
-plot([sort(eig((C_barA^(-.5)*C_barB*C_barA^(-.5)))) sort(eig(cA^(-.5)*cB*cA^(-.5)))],'--o')
+% figure
+% plot([sort(eig((C_barA^(-.5)*C_barB*C_barA^(-.5)))) sort(eig(cA^(-.5)*cB*cA^(-.5)))],'--o')
 
 %% 
 table = zeros(2,3);
